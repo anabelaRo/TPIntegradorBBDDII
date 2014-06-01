@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 SELECT alu.nombreal   AS Nombre,
        car.nombrecarr AS Carrera,
        mat.nombremat  AS Materia,
@@ -17,4 +15,3 @@ SELECT alu.nombreal   AS Nombre,
           ON alu.codigoal = nota.codigoal
          AND mat.codmat = nota.codmat
 ORDER BY alu.nombreal, car.nombrecarr, mat.nombremat
->>>>>>> b37848c2de9cc4166e9f91fb2f344b915873f553
