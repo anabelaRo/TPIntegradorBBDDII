@@ -1,6 +1,6 @@
 SELECT * INTO tp1.aux_nota  
 FROM  tp1.nota
-WHERE codmat = 2 /*BASES DE DATOS I*/
+WHERE codmat = 9 /*BASES DE DATOS I*/
 AND nota < 4     /*Se aprueba con 4*/
 
 ALTER TABLE tp1.aux_nota WITH CHECK ADD  CONSTRAINT FK_AuxNota_Materia FOREIGN KEY(codmat)
