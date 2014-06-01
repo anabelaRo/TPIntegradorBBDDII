@@ -1,38 +1,61 @@
-create schema tp1
+CREATE SCHEMA tp1
 
-create table tp1.alumno
+CREATE TABLE tp1.alumno
 (
-codigoal smallint not null,
-nombreal varchar(32) not null,
-carrera varchar(32) not null,
+codigoal SMALLINT not null,
+nombreal VARCHAR(32) not null,
+carrera VARCHAR(32) not null,
 CONSTRAINT PK_alumno_codigoal PRIMARY KEY CLUSTERED (codigoal))
 
-create table tp1.monitor
+CREATE TABLE tp1.monitor
 (
-codigoal smallint not null,
-codmat smallint not null,
+codigoal SMALLINT not null,
+codmat SMALLINT not null,
 CONSTRAINT PK_monitor_codigoal_codmat PRIMARY KEY CLUSTERED (codigoal, codmat))
 
-create table tp1.profesor
+CREATE TABLE tp1.profesor
 (
-codprof smallint not null,
-nombre varchar(32) not null,
-puesto varchar(32) not null,
-carrera varchar(32) not null,
+codprof SMALLINT not null,
+nombre VARCHAR(32) not null,
+puesto VARCHAR(32) not null,
+carrera VARCHAR(32) not null,
 CONSTRAINT PK_profesor_codprof PRIMARY KEY CLUSTERED (codprof))
 
-create table tp1.materia
+CREATE TABLE tp1.materia
 (
-codmat smallint not null,
-nombremat varchar(32) not null,
-carrera varchar(32) not null,
+codmat SMALLINT not null,
+nombremat VARCHAR(32) not null,
+carrera VARCHAR(32) not null,
 CONSTRAINT PK_materia_codmat PRIMARY KEY CLUSTERED (codmat))
 
-create table tp1.nota
+CREATE TABLE tp1.nota
 (
-codmat smallint not null,
-codigoal smallint not null,
-fecha date not null,
+codmat SMALLINT not null,
+codigoal SMALLINT not null,
+fecha DATE not null,
 nota DECIMAL(4, 2) not null, /*poner dos digitos*/
 CONSTRAINT PK_nota_codmat_codigoal PRIMARY KEY CLUSTERED (codmat, codigoal))
 
+ALTER TABLE tp1.monitor WITH CHECK ADD  CONSTRAINT FK_Monitor_Alumno FOREIGN KEY(codigoal)
+REFERENCES tp1.alumno(codigoal)
+GO
+ALTER TABLE tp1.monitor CHECK CONSTRAINT FK_Monitor_Alumno
+GO
+
+ALTER TABLE tp1.monitor WITH CHECK ADD  CONSTRAINT FK_Monitor_Materia FOREIGN KEY(codmat)
+REFERENCES tp1.materia(codmat)
+GO
+ALTER TABLE tp1.monitor CHECK CONSTRAINT FK_Monitor_Materia
+GO
+
+ALTER TABLE tp1.nota WITH CHECK ADD  CONSTRAINT FK_Nota_Materia FOREIGN KEY(codmat)
+REFERENCES tp1.materia(codmat)
+GO
+ALTER TABLE tp1.nota CHECK CONSTRAINT FK_Nota_Materia
+GO
+
+ALTER TABLE tp1.nota WITH CHECK ADD  CONSTRAINT FK_Nota_Alumno FOREIGN KEY(codigoal)
+REFERENCES tp1.alumno(codigoal)
+GO
+ALTER TABLE tp1.nota CHECK CONSTRAINT FK_Nota_Alumno
+GO
