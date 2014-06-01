@@ -59,5 +59,3 @@ REFERENCES tp1.alumno(codigoal)
 GO
 ALTER TABLE tp1.nota CHECK CONSTRAINT FK_Nota_Alumno
 GO
-
-DROP SCHEMA tp1
