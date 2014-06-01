@@ -1,0 +1,6 @@
+ALTER TABLE tp1.materia
+	ADD nota VARCHAR(100) NULL;
+--	
+ALTER TABLE tp1.materia
+	ADD CONSTRAINT Nota_Default
+		DEFAULT GETDATE() FOR nota;
