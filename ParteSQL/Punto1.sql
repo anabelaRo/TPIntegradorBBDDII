@@ -11,5 +11,3 @@ INNER JOIN tp1.nota AS nota
 	ON alu.codigoal = nota.codigoal
 	AND mat.codmat = nota.codmat
 ORDER BY alu.nombreal,  car.nombrecarr, mat.nombremat
-
-
