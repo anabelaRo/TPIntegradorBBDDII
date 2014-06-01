@@ -33,7 +33,7 @@ CREATE TABLE tp1.nota
 codmat SMALLINT not null,
 codigoal SMALLINT not null,
 fecha DATE not null,
-nota DECIMAL(4, 2) not null, /*poner dos digitos*/
+calif DECIMAL(4, 2) not null, /*poner dos digitos*/
 CONSTRAINT PK_nota PRIMARY KEY CLUSTERED (codmat, codigoal))
 
 ALTER TABLE tp1.monitor WITH CHECK ADD  CONSTRAINT FK_Monitor_Alumno FOREIGN KEY(codigoal)
@@ -59,3 +59,5 @@ REFERENCES tp1.alumno(codigoal)
 GO
 ALTER TABLE tp1.nota CHECK CONSTRAINT FK_Nota_Alumno
 GO
+
+DROP SCHEMA tp1
