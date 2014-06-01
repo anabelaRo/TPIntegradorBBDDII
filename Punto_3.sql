@@ -1,0 +1,2 @@
+ALTER TABLE tp1.materia 
+	ALTER COLUMN nombremat VARCHAR(52) NOT NULL;
