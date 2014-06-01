@@ -1,7 +1,7 @@
 SELECT * INTO tp1.aux_nota  
 FROM  tp1.nota
 WHERE codmat = 9 /*BASES DE DATOS I*/
-AND nota < 4     /*Se aprueba con 4*/
+AND calif < 4     /*Se aprueba con 4*/
 
 ALTER TABLE tp1.aux_nota WITH CHECK ADD  CONSTRAINT PK_aux_nota PRIMARY KEY CLUSTERED (codmat, codigoal, fecha)
 GO

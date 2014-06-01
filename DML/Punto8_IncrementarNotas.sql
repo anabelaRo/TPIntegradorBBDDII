@@ -4,4 +4,3 @@ UPDATE tp1.nota
                                  THEN calif + 1
                             ELSE 10
                        END)
-   

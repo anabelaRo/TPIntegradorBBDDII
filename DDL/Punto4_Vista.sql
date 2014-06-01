@@ -1,6 +1,3 @@
-USE [AdventureWorks]
-GO
-
 SET ANSI_NULLS ON
 GO
 
@@ -19,9 +16,3 @@ ON mon.codmat = mat.codmat
 WHERE mat.nombremat = 'Análisis Matemático'
 
 GO
-
-insert into tp1.materia values (1, 'Análisis Matemático', 'Ingenieria informática')
-insert into tp1.materia values (2, 'Bases de datos I', 'Ingenieria informática')
-insert into tp1.monitor values (1, 1)
-insert into tp1.alumno values (1, 'Anabela', 'Ingenieria informática')
-insert into tp1.nota values (2, 1, '20140505', '2.5')
