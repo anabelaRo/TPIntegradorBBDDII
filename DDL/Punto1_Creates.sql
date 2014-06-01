@@ -34,7 +34,7 @@ codmat SMALLINT not null,
 codigoal SMALLINT not null,
 fecha DATE not null,
 calif DECIMAL(4, 2) not null, /*poner dos digitos*/
-CONSTRAINT PK_nota PRIMARY KEY CLUSTERED (codmat, codigoal))
+CONSTRAINT PK_nota PRIMARY KEY CLUSTERED (codmat, codigoal, fecha))
 
 ALTER TABLE tp1.monitor WITH CHECK ADD  CONSTRAINT FK_Monitor_Alumno FOREIGN KEY(codigoal)
 REFERENCES tp1.alumno(codigoal)
