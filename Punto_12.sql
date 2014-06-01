@@ -1,0 +1,56 @@
+CREATE LOGIN B1 WITH PASSWORD='Password1';
+CREATE USER B1 FOR LOGIN B2;
+--
+CREATE LOGIN B2 WITH PASSWORD='Password2';
+CREATE USER B2 FOR LOGIN B2;
+--
+CREATE LOGIN B3 WITH PASSWORD='Password3';
+CREATE USER B3 FOR LOGIN B3;
+--
+--
+--A)
+REVOKE ALL PRIVILEGES ON tp1.alumno TO B1;
+--
+GRANT ALL PRIVILEGES ON tp1.alumno TO B1;
+--
+REVOKE ALL PRIVILEGES ON tp1.profesor TO B1;
+--
+GRANT ALL PRIVILEGES ON tp1.profesor TO B1;
+--
+--GRANT SELECT, INSERT, UPDATE, DELETE, ALTER, REFERENCES ON tp1.alumno TO B1;
+--GRANT SELECT, INSERT, UPDATE, DELETE, ALTER, REFERENCES ON tp1.profesor TO B1;
+
+--B)
+REVOKE ALL PRIVILEGES ON tp1.materia TO B2;
+--
+GRANT SELECT, UPDATE ON tp1.materia(nota) TO B2;
+--GRANT INSERT ON tp1.materia(nota) TO B2; --Este permiso no se puede aplicar a columnas o listas de columnas.
+
+--C)
+--
+CREATE PROCEDURE tp1.sp_valida_aplazos
+	@CODMAT INT
+AS
+BEGIN
+
+	DECLARE @DESCRIPCIONERROR VARCHAR(MAX) --Declara una variable
+
+	BEGIN TRY
+		SELECT *
+		FROM tp1.materia
+		WHERE codmat = @CODMAT;
+	END TRY
+
+	BEGIN CATCH
+		SELECT @DESCRIPCIONERROR = 'Error al consultar tp1.nota - ' + ERROR_MESSAGE()
+ 
+		RAISERROR (@DESCRIPCIONERROR,16,1) 
+	END CATCH
+
+	END
+GO
+--
+GRANT EXECUTE ON tp1.sp_valida_aplazos TO B3;
+
+--D)
+REVOKE UPDATE ON tp1.materia TO B2;
